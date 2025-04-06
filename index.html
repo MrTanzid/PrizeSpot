@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrizeSpot - Your Gateway to Exclusive Rewards</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+        }
+        .exclusive-badge {
+            background-color: #ff5252;
+            color: white;
+            transform: rotate(-45deg);
+            position: absolute;
+            top: 15px;
+            left: -35px;
+            width: 150px;
+            text-align: center;
+            font-weight: bold;
+            padding: 5px;
+            z-index: 10;
+        }
+        .offer-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .claim-btn {
+            transition: all 0.3s ease;
+        }
+        .claim-btn:hover {
+            transform: scale(1.05);
+        }
+        .testimonial-slider {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .testimonial-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            padding: 20px;
+        }
+        .device-tag {
+            display: inline-block;
+            background-color: #ff7700;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        .countdown {
+            background-color: #ff3b30;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 15px 0;
+        }
+        .faq-question {
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer {
+            padding-top: 10px;
+            display: none;
+        }
+        .faq-answer.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-indigo-600 font-bold text-2xl">PrizeSpot</a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#exclusive" class="hover:text-indigo-600">Exclusive Offers</a>
+                <a href="#all-rewards" class="hover:text-indigo-600">All Rewards</a>
+                <a href="#testimonials" class="hover:text-indigo-600">Testimonials</a>
+                <a href="#faqs" class="hover:text-indigo-600">FAQs</a>
+                <span class="countdown">Today Only!</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        
+        <!-- Hero Section -->
+        <section class="bg-indigo-50 rounded-lg p-8 mb-10 text-center">
+            <h1 class="text-4xl font-bold mb-4">Exclusive Rewards Waiting For You</h1>
+            <p class="text-lg mb-6">Claim your rewards now before they're gone! Limited quantities available.</p>
+            <div class="inline-block bg-white px-4 py-2 rounded-md shadow mb-4">
+                <span class="font-semibold">Offer expires in:</span>
+                <span id="countdown-timer" class="font-bold text-red-600 ml-2">23:59:59</span>
+            </div>
+        </section>
+
+        <!-- Exclusive Offers Section -->
+        <section id="exclusive" class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center">Exclusive iOS Offers</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Dunkin Donuts Offer -->
+                <div class="offer-card bg-white rounded-lg shadow overflow-hidden">
+                    <div class="exclusive-badge">EXCLUSIVE</div>
+                    <div class="p-6">
+                        <div class="flex justify-end mb-2">
+                            <span class="device-tag"><i class="fab fa-apple mr-1"></i> iOS Only</span>
+                        </div>
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-gray-200 rounded-full p-4 w-24 h-24 flex items-center justify-center">
+                                <i class="fas fa-mug-hot text-4xl text-gray-700"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Dunkin Donuts Samples!</h3>
+                        <p class="text-gray-600 mb-4">Get free samples of our delicious donuts, coffee, and breakfast items. Limited quantities available!</p>
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-user-check text-green-500 mr-2"></i>
+                            <span class="text-green-500 font-bold">87% claimed</span>
+                            <span class="ml-auto text-red-500 bg-red-100 px-2 py-1 rounded text-sm">Ending soon</span>
+                        </div>
+                        <a href="https://tinyurl.com/yv54t3ae" target="_blank" class="claim-btn block w-full bg-red-600 hover:bg-red-700 text-white text-center py-3 rounded-md font-semibold mt-4">CLAIM FREE SAMPLES</a>
+                        <p class="text-xs text-gray-500 mt-2 text-center">iOS devices only. Terms apply.</p>
+                    </div>
+                </div>
+
+                <!-- Amazon Gift Card Offer -->
+                <div class="offer-card bg-white rounded-lg shadow overflow-hidden">
+                    <div class="exclusive-badge">EXCLUSIVE</div>
+                    <div class="p-6">
+                        <div class="flex justify-end mb-2">
+                            <span class="device-tag"><i class="fab fa-apple mr-1"></i> iOS Only</span>
+                        </div>
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-blue-100 rounded-full p-4 w-24 h-24 flex items-center justify-center">
+                                <i class="fab fa-amazon text-4xl text-blue-500"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">$1000 Amazon Gift Card!</h3>
+                        <p class="text-gray-600 mb-4">Chance to win a $1000 Amazon gift card! Shop for anything you want on the world's largest online store.</p>
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-user-check text-green-500 mr-2"></i>
+                            <span class="text-green-500 font-bold">63% claimed</span>
+                            <span class="ml-auto text-yellow-600 bg-yellow-100 px-2 py-1 rounded text-sm">Limited Offer</span>
+                        </div>
+                        <a href="https://tinyurl.com/2xunfsy4" target="_blank" class="claim-btn block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-md font-semibold mt-4">CLAIM $1000 GIFT CARD</a>
+                        <p class="text-xs text-gray-500 mt-2 text-center">iOS devices only. Terms apply.</p>
+                    </div>
+                </div>
+
+                <!-- Kohl's Gift Card Offer -->
+                <div class="offer-card bg-white rounded-lg shadow overflow-hidden">
+                    <div class="exclusive-badge">EXCLUSIVE</div>
+                    <div class="p-6">
+                        <div class="flex justify-end mb-2">
+                            <span class="device-tag"><i class="fab fa-apple mr-1"></i> iOS Only</span>
+                        </div>
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-purple-100 rounded-full p-4 w-24 h-24 flex items-center justify-center">
+                                <i class="fas fa-gift text-4xl text-purple-500"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">$500 Kohl's Gift Card!</h3>
+                        <p class="text-gray-600 mb-4">Win a $500 shopping spree at Kohl's! Refresh your wardrobe or upgrade your home decor.</p>
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-user-check text-green-500 mr-2"></i>
+                            <span class="text-green-500 font-bold">71% claimed</span>
+                            <span class="ml-auto text-red-500 bg-red-100 px-2 py-1 rounded text-sm">Few left</span>
+                        </div>
+                        <a href="https://tinyurl.com/yhcf9uah" target="_blank" class="claim-btn block w-full bg-purple-600 hover:bg-purple-700 text-white text-center py-3 rounded-md font-semibold mt-4">CLAIM $500 GIFT CARD</a>
+                        <p class="text-xs text-gray-500 mt-2 text-center">iOS devices only. Terms apply.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Regular Offers Section -->
+        <section id="all-rewards" class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center">All Rewards</h2>
+            <p class="text-center text-gray-600 mb-6">Available for both iOS and Android devices</p>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Spa Gift Card -->
+                <div class="offer-card bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-pink-100 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                                <i class="fas fa-spa text-pink-500 text-3xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">$75 Spa Gift Package</h3>
+                        <p class="text-gray-600 mb-4">Relax and rejuvenate with this spa treatment package!</p>
+                        <a href="https://tinyurl.com/yc5wufdj" target="_blank" class="claim-btn block w-full bg-pink-500 hover:bg-pink-600 text-white text-center py-3 rounded-md font-semibold">CLAIM REWARD</a>
+                    </div>
+                </div>
+
+                <!-- Premium Earbuds -->
+                <div class="offer-card bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-gray-200 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                                <i class="fas fa-headphones text-gray-700 text-3xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Free Premium Earbuds</h3>
+                        <p class="text-gray-600 mb-4">High-quality wireless earbuds with amazing sound quality!</p>
+                        <a href="https://tinyurl.com/yc5wufdj" target="_blank" class="claim-btn block w-full bg-gray-700 hover:bg-gray-800 text-white text-center py-3 rounded-md font-semibold">CLAIM REWARD</a>
+                    </div>
+                </div>
+
+                <!-- Pizza Hut Card -->
+                <div class="offer-card bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-red-100 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                                <i class="fas fa-pizza-slice text-red-500 text-3xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">$25 Pizza Hut Card</h3>
+                        <p class="text-gray-600 mb-4">Enjoy delicious pizza and sides with this gift card!</p>
+                        <a href="https://tinyurl.com/yc5wufdj" target="_blank" class="claim-btn block w-full bg-red-500 hover:bg-red-600 text-white text-center py-3 rounded-md font-semibold">CLAIM REWARD</a>
+                    </div>
+                </div>
+
+                <!-- Barnes & Noble Card -->
+                <div class="offer-card bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-blue-100 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                                <i class="fas fa-book text-blue-500 text-3xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">$30 Barnes & Noble Card</h3>
+                        <p class="text-gray-600 mb-4">Find your next favorite book with this gift card!</p>
+                        <a href="https://tinyurl.com/yc5wufdj" target="_blank" class="claim-btn block w-full bg-blue-500 hover:bg-blue-600 text-white text-center py-3 rounded-md font-semibold">CLAIM REWARD</a>
+                    </div>
+                </div>
+
+                <!-- GameStop Card -->
+                <div class="offer-card bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-green-100 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                                <i class="fas fa-gamepad text-green-500 text-3xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">$50 GameStop Gift Card</h3>
+                        <p class="text-gray-600 mb-4">Get the latest games and accessories with this card!</p>
+                        <a href="https://tinyurl.com/yc5wufdj" target="_blank" class="claim-btn block w-full bg-green-500 hover:bg-green-600 text-white text-center py-3 rounded-md font-semibold">CLAIM REWARD</a>
+                    </div>
+                </div>
+
+                <!-- Home Depot Card -->
+                <div class="offer-card bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-orange-100 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                                <i class="fas fa-home text-orange-500 text-3xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">$100 Home Depot Card</h3>
+                        <p class="text-gray-600 mb-4">Start your home improvement project with this gift card!</p>
+                        <a href="https://tinyurl.com/yc5wufdj" target="_blank" class="claim-btn block w-full bg-orange-500 hover:bg-orange-600 text-white text-center py-3 rounded-md font-semibold">CLAIM REWARD</a>
+                    </div>
+                </div>
+
+                <!-- Starbucks Card -->
+                <div class="offer-card bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-green-100 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                                <i class="fas fa-coffee text-green-700 text-3xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">$50 Starbucks Gift Card</h3>
+                        <p class="text-gray-600 mb-4">Enjoy premium coffee and treats at any Starbucks location!</p>
+                        <a href="https://tinyurl.com/yc5wufdj" target="_blank" class="claim-btn block w-full bg-green-700 hover:bg-green-800 text-white text-center py-3 rounded-md font-semibold">CLAIM REWARD</a>
+                    </div>
+                </div>
+
+                <!-- Target Gift Card -->
+                <div class="offer-card bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-red-100 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                                <i class="fas fa-bullseye text-red-600 text-3xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">$75 Target Gift Card</h3>
+                        <p class="text-gray-600 mb-4">Shop for everything you need at your local Target store!</p>
+                        <a href="https://tinyurl.com/yc5wufdj" target="_blank" class="claim-btn block w-full bg-red-600 hover:bg-red-700 text-white text-center py-3 rounded-md font-semibold">CLAIM REWARD</a>
+                    </div>
+                </div>
+
+                <!-- Chipotle Gift Card -->
+                <div class="offer-card bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-red-100 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                                <i class="fas fa-pepper-hot text-red-500 text-3xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">$25 Chipotle Gift Card</h3>
+                        <p class="text-gray-600 mb-4">Enjoy delicious Mexican grill favorites with this card!</p>
+                        <a href="https://tinyurl.com/yc5wufdj" target="_blank" class="claim-btn block w-full bg-red-500 hover:bg-red-600 text-white text-center py-3 rounded-md font-semibold">CLAIM REWARD</a>
+                    </div>
+                </div>
+
+                <!-- Best Buy Gift Card -->
+                <div class="offer-card bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-blue-100 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                                <i class="fas fa-tv text-blue-700 text-3xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">$50 Best Buy Gift Card</h3>
+                        <p class="text-gray-600 mb-4">Get the latest electronics and gadgets with this gift card!</p>
+                        <a href="https://tinyurl.com/yc5wufdj" target="_blank" class="claim-btn block w-full bg-blue-700 hover:bg-blue-800 text-white text-center py-3 rounded-md font-semibold">CLAIM REWARD</a>
+                    </div>
+                </div>
+
+                <!-- Olive Garden Gift Card -->
+                <div class="offer-card bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-green-100 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                                <i class="fas fa-utensils text-green-600 text-3xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">$40 Olive Garden Gift Card</h3>
+                        <p class="text-gray-600 mb-4">Enjoy Italian cuisine and unlimited breadsticks with this card!</p>
+                        <a href="https://tinyurl.com/yc5wufdj" target="_blank" class="claim-btn block w-full bg-green-600 hover:bg-green-700 text-white text-center py-3 rounded-md font-semibold">CLAIM REWARD</a>
+                    </div>
+                </div>
+
+                <!-- Uber Eats Credit -->
+                <div class="offer-card bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-gray-200 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                                <i class="fas fa-food-delivery text-black text-3xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">$30 Uber Eats Credit</h3>
+                        <p class="text-gray-600 mb-4">Get your favorite food delivered to your door with this credit!</p>
+                        <a href="https://tinyurl.com/yc5wufdj" target="_blank" class="claim-btn block w-full bg-black hover:bg-gray-800 text-white text-center py-3 rounded-md font-semibold">CLAIM REWARD</a>
+                    </div>
+                </div>
+
+                <!-- Sephora Gift Card -->
+                <div class="offer-card bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-pink-100 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                                <i class="fas fa-spa text-pink-600 text-3xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">$25 Sephora Gift Card</h3>
+                        <p class="text-gray-600 mb-4">Shop for premium beauty products with this gift card!</p>
+                        <a href="https://tinyurl.com/yc5wufdj" target="_blank" class="claim-btn block w-full bg-pink-600 hover:bg-pink-700 text-white text-center py-3 rounded-md font-semibold">CLAIM REWARD</a>
+                    </div>
+                </div>
+
+                <!-- Nike Gift Card -->
+                <div class="offer-card bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-gray-200 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                                <i class="fab fa-nike text-black text-3xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">$35 Nike Gift Card</h3>
+                        <p class="text-gray-600 mb-4">Get premium athletic wear and shoes with this gift card!</p>
+                        <a href="https://tinyurl.com/yc5wufdj" target="_blank" class="claim-btn block w-full bg-black hover:bg-gray-800 text-white text-center py-3 rounded-md font-semibold">CLAIM REWARD</a>
+                    </div>
+                </div>
+
+                <!-- Apple App Store Credit -->
+                <div class="offer-card bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-gray-100 rounded-full p-4 w-20 h-20 flex items-center justify-center">
+                                <i class="fab fa-apple text-gray-800 text-3xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">$25 Apple App Store Credit</h3>
+                        <p class="text-gray-600 mb-4">Download premium apps, games, and content with this credit!</p>
+                        <a href="https://tinyurl.com/yc5wufdj" target="_blank" class="claim-btn block w-full bg-gray-800 hover:bg-black text-white text-center py-3 rounded-md font-semibold">CLAIM REWARD</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="mb-12 py-10 bg-indigo-50 rounded-lg">
+            <h2 class="text-3xl font-bold mb-2 text-center">HAPPY CUSTOMERS</h2>
+            <h3 class="text-4xl font-bold mb-4 text-center">What People Are Saying</h3>
+            <p class="text-center text-gray-600 mb-8">Don't just take our word for it. See what our satisfied customers have to say about their rewards!</p>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-track">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-slide">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="mr-4">
+                                    <h4 class="font-bold">Robert Johnson</h4>
+                                    <div class="text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"The Dunkin Donuts samples were delicious! I received them within a week of claiming the offer. Will definitely be looking for more rewards here!"</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-slide">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="mr-4">
+                                    <h4 class="font-bold">Jennifer Smith</h4>
+                                    <div class="text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"I was skeptical at first, but I actually received my Amazon gift card! Used it to buy a new tablet. This site is legit!"</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-slide">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="mr-4">
+                                    <h4 class="font-bold">Michael Williams</h4>
+                                    <div class="text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"Got my Home Depot gift card and used it to buy tools for my DIY project. The process was easy and straightforward. Thanks PrizeSpot!"</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-slide">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="mr-4">
+                                    <h4 class="font-bold">Sarah Miller</h4>
+                                    <div class="text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"The Starbucks gift card was perfect! I've been enjoying my favorite drinks all month. Will definitely be back for more offers!"</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 5 -->
+                    <div class="testimonial-slide">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="mr-4">
+                                    <h4 class="font-bold">David Brown</h4>
+                                    <div class="text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"The premium earbuds were much better quality than I expected! Great sound and comfortable fit. Thanks for the awesome reward!"</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 6 -->
+                    <div class="testimonial-slide">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="mr-4">
+                                    <h4 class="font-bold">Emily Davis</h4>
+                                    <div class="text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"Used my Kohl's gift card to buy new clothes for my daughter. The card arrived quickly and worked perfectly. Super happy!"</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 7 -->
+                    <div class="testimonial-slide">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="mr-4">
+                                    <h4 class="font-bold">James Wilson</h4>
+                                    <div class="text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"Claimed the GameStop gift card and bought a new game I've been wanting. Simple process and fast delivery. Will try more rewards soon!"</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 8 -->
+                    <div class="testimonial-slide">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="mr-4">
+                                    <h4 class="font-bold">Amanda Taylor</h4>
+                                    <div class="text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"The spa package was just what I needed! Perfect way to relax and unwind. Thank you PrizeSpot for this amazing reward!"</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 9 -->
+                    <div class="testimonial-slide">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="mr-4">
+                                    <h4 class="font-bold">Thomas Moore</h4>
+                                    <div class="text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"The Pizza Hut gift card made for a perfect family dinner night! Easy to redeem and use. Will be back for more offers!"</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 10 -->
+                    <div class="testimonial-slide">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="mr-4">
+                                    <h4 class="font-bold">Jessica Martinez</h4>
+                                    <div class="text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"Got my Barnes & Noble gift card and bought two books I've been wanting to read. The whole process was smooth and easy!"</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 11 -->
+                    <div class="testimonial-slide">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="mr-4">
+                                    <h4 class="font-bold">Ryan Clark</h4>
+                                    <div class="text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"The Nike gift card was awesome! Bought some new running shoes I needed. Fast delivery and easy to use. Thanks PrizeSpot!"</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 12 -->
+                    <div class="testimonial-slide">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="mr-4">
+                                    <h4 class="font-bold">Olivia Robinson</h4>
+                                    <div class="text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"Used my Sephora gift card to treat myself to some new makeup. Such a nice reward and it arrived quickly in my email!"</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 13 -->
+                    <div class="testimonial-slide">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="mr-4">
+                                    <h4 class="font-bold">Christopher Lee</h4>
+                                    <div class="text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"The Chipotle gift card was great! Had lunch with my coworkers and they were all impressed I got it for free from PrizeSpot!"</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 14 -->
+                    <div class="testimonial-slide">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="mr-4">
+                                    <h4 class="font-bold">Sophia Garcia</h4>
+                                    <div class="text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"I was able to get several new apps with my Apple App Store credit. Great reward that was easy to claim and use right away!"</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 15 -->
+                    <div class="testimonial-slide">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="mr-4">
+                                    <h4 class="font-bold">Daniel Thompson</h4>
+                                    <div class="text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"My Uber Eats credit came in handy when I had friends over! Ordered food for everyone without spending a dime. Love PrizeSpot!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center mt-6">
+                <button id="prev-testimonial" class="bg-indigo-600 text-white px-4 py-2 rounded-l-md hover:bg-indigo-700">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="next-testimonial" class="bg-indigo-600 text-white px-4 py-2 rounded-r-md hover:bg-indigo-700">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faqs" class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center">Frequently Asked Questions</h2>
+            
+            <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I claim my reward?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Simply click on the "Claim Reward" button for the offer you're interested in. You'll be directed to a page where you can complete the requirements to receive your reward. For iOS-exclusive offers, you must be using an iOS device.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long does it take to receive my reward?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most digital rewards (gift cards) are delivered within 24-48 hours via email. Physical items like product samples may take 1-2 weeks for delivery, depending on your location.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are these rewards really free?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! All rewards on PrizeSpot are completely free. Some offers may require you to complete a short survey or other requirements from our sponsors, but there is never any purchase necessary to receive your reward.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Why are some offers iOS exclusive?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Some of our premium partners specifically target iOS users for their marketing campaigns. These exclusive offers are only available to users on Apple devices. Don't worry though - we have plenty of great rewards for Android users too!</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How many rewards can I claim?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can claim as many different rewards as you like! However, each user is limited to one of each specific reward. This ensures everyone has a fair chance to enjoy our offers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between mb-6">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">PrizeSpot</h3>
+                    <p class="text-gray-400 max-w-xs">Your destination for premium rewards and exclusive offers. Claim yours today!</p>
+                </div>
+                <div class="mb-6 md:mb-0">
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#exclusive" class="text-gray-400 hover:text-white">Exclusive Offers</a></li>
+                        <li><a href="#all-rewards" class="text-gray-400 hover:text-white">All Rewards</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white">Testimonials</a></li>
+                        <li><a href="#faqs" class="text-gray-400 hover:text-white">FAQs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-6 text-center text-gray-400">
+                <p>&copy; 2023 PrizeSpot. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date();
+            const hours = 23 - now.getHours();
+            const minutes = 59 - now.getMinutes();
+            const seconds = 59 - now.getSeconds();
+            
+            document.getElementById('countdown-timer').textContent = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                answer.classList.toggle('active');
+                
+                if (answer.classList.contains('active')) {
+                    icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+                } else {
+                    icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+                }
+            });
+        });
+        
+        // Testimonial Slider
+        const track = document.querySelector('.testimonial-track');
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const nextButton = document.getElementById('next-testimonial');
+        const prevButton = document.getElementById('prev-testimonial');
+        
+        let currentIndex = 0;
+        const slideWidth = 100; // 100% width
+
+        // Clone the slides for infinite loop
+        slides.forEach(slide => {
+            const clone = slide.cloneNode(true);
+            track.appendChild(clone);
+        });
+        
+        function updateSlidePosition() {
+            track.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+        }
+        
+        function moveToNextSlide() {
+            currentIndex++;
+            updateSlidePosition();
+            
+            // When we reach the cloned set, instantly reset to the original set
+            if (currentIndex >= slides.length) {
+                setTimeout(() => {
+                    track.style.transition = 'none';
+                    currentIndex = 0;
+                    updateSlidePosition();
+                    setTimeout(() => {
+                        track.style.transition = 'transform 0.5s ease';
+                    }, 50);
+                }, 500);
+            }
+        }
+        
+        function moveToPrevSlide() {
+            if (currentIndex === 0) {
+                track.style.transition = 'none';
+                currentIndex = slides.length;
+                updateSlidePosition();
+                setTimeout(() => {
+                    track.style.transition = 'transform 0.5s ease';
+                    currentIndex--;
+                    updateSlidePosition();
+                }, 50);
+            } else {
+                currentIndex--;
+                updateSlidePosition();
+            }
+        }
+        
+        nextButton.addEventListener('click', moveToNextSlide);
+        prevButton.addEventListener('click', moveToPrevSlide);
+        
+        // Auto-advance the testimonial slider
+        setInterval(moveToNextSlide, 5000);
+    </script>
+</body>
+</html>
